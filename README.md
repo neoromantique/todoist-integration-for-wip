@@ -31,8 +31,9 @@ Ha!
 
 ## ToDo
 
-Add filtering for a folder(aka only send notifs for certain folders, like public)
 Clean up the code ¯\_(ツ)_/¯ 
+
+Move credentials into a separate file
 
 ## License
 

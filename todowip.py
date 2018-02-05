@@ -16,6 +16,8 @@ api_hash = '00000000000000000000000'
 phone = '+000000000000'
 username = 'theone'
 
+project_id = '2176677882'
+
 # (2) Create the client and connect
 client = TelegramClient(username, api_id, api_hash)
 client.connect()
@@ -29,20 +31,17 @@ if not client.is_user_authorized():
         client.sign_in(password=input('Password: '))
 
 # Helper function to send messages to wipchat telegram group 
-def sendMessage(message):
-    chat = client.get_entity('wipchat')
-    client.send_message('wipchat', message)
 
 # Define web server 'controller'
 class MyDumpHandler(tornado.web.RequestHandler):
     def post(self):
         data = tornado.escape.json_decode(self.request.body)
-        if data['event_name'] == "item:added":
+        if data['event_name'] == "item:added" and data["event_data"]["project_id"] == project_id:
             message = "/todo " + data["event_data"]["content"]
-            sendMessage(message)
-        if data['event_name'] == "item:completed":
+            # client.send_message('wipbots', message)
+        if data['event_name'] == "item:completed" and data["event_data"]["project_id"] == project_id:
             message = "/done " + data["event_data"]["content"]
-            sendMessage(message)
+            client.send_message('wipchat', message)
         pprint.pprint(data['event_name'])
 
         pprint.pprint(message)
