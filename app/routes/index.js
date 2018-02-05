@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (app, db) => {
-  db;
+const eventHandler = require(process.cwd() + '/app/controllers/eventController.js');
 const bodyParser = require('body-parser');
 
   app.route('/')
@@ -10,11 +10,5 @@ const bodyParser = require('body-parser');
     });
 
   app.route('/')
-    .post((req, res) => {
-      let freq = 
-            req.body.initiator.full_name + " Has added a new task called: "
-            + req.body.event_data.content;
-      console.log(freq);
-      res.sendStatus(200);
-    })
+    .post(eventHandler)
 };
