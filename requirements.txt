@@ -1,0 +1,12 @@
+aiohttp==2.3.10
+async-timeout==2.0.0
+chardet==3.0.4
+idna==2.6
+idna-ssl==1.0.0
+multidict==4.1.0
+pyaes==1.6.1
+pyasn1==0.4.2
+rsa==3.4.2
+Telethon==0.17
+tornado==4.5.3
+yarl==1.1.0
