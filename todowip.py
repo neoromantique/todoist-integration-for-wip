@@ -16,7 +16,7 @@ api_hash = '00000000000000000000000'
 phone = '+000000000000'
 username = 'theone'
 
-project_id = '2176677882'
+project_id = 2176677882
 
 # (2) Create the client and connect
 client = TelegramClient(username, api_id, api_hash)
@@ -47,7 +47,7 @@ class MyDumpHandler(tornado.web.RequestHandler):
         if data['event_name'] == "item:completed" and data["event_data"]["project_id"] == project_id:
             message = "/done " + data["event_data"]["content"]
             client.send_message('wipchat', message)
-        pprint.pprint(data['event_name'])
+        pprint.pprint(data['event_name'] + ' in project ' + data["event_data"]["project_id"] + ' is not handled') 
 
 # Run server loop
 if __name__ == "__main__":
