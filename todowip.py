@@ -49,8 +49,6 @@ class MyDumpHandler(tornado.web.RequestHandler):
             client.send_message('wipchat', message)
         pprint.pprint(data['event_name'])
 
-        pprint.pprint(message)
-
 # Run server loop
 if __name__ == "__main__":
     tornado.web.Application([(r"/.*", MyDumpHandler),]).listen(5500)
