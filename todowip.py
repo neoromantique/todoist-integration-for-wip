@@ -34,6 +34,11 @@ if not client.is_user_authorized():
 
 # Define web server 'controller'
 class MyDumpHandler(tornado.web.RequestHandler):
+    pprint.pprint('HTTP Listener initialized:')
+    pprint.pprint('##########################')
+    pprint.pprint('#######---W I P-----######')
+    pprint.pprint('##########################')
+    
     def post(self):
         data = tornado.escape.json_decode(self.request.body)
         if data['event_name'] == "item:added" and data["event_data"]["project_id"] == project_id:
