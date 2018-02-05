@@ -47,7 +47,7 @@ class MyDumpHandler(tornado.web.RequestHandler):
         if data['event_name'] == "item:completed" and data["event_data"]["project_id"] == project_id:
             message = "/done " + data["event_data"]["content"]
             client.send_message('wipchat', message)
-        pprint.pprint(data['event_name'] + ' in project ' + data["event_data"]["project_id"] + ' is not handled') 
+        pprint.pprint(data['event_name'] + " in project " + str(data["event_data"]["project_id"]) + " is not handled") 
 
 # Run server loop
 if __name__ == "__main__":
