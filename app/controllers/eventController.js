@@ -11,7 +11,10 @@ function eventHandler(req, res) {
       req.body.event_data.content;
     console.log(freq);
     res.sendStatus(200);
-  } else { res.sendStatus(502); }
+  } else { 
+      console.log(req.body.event_name)
+      res.sendStatus(502); 
+    }
 }
 
 module.exports = eventHandler;
