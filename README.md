@@ -1,13 +1,25 @@
 # TodoWIP WIP Integration for Todoist
 
-(really hacky one)
+(really hacky one) 
 
 ## Overview
 
+Small python script with really overkill Tornado framework;
 
 ## Quick Start Guide
 
+* Install dependencies.
+* Create telegram app and enter app_id in the script
+* Deploy on a server somewhere
+* Create todoist Application and set webhook URL to http://yourhostname.tld:5500
+
 ### Prerequisites
+```
+python3 (duh)
+```
+```
+pip3 install -r requirements.txt
+```
 
 ## Contributing
 
@@ -16,6 +28,11 @@ This is an open-source project, and contributions are always welcome!
 ## Documentation
 
 Ha!
+
+## ToDo
+
+Add filtering for a folder(aka only send notifs for certain folders, like public)
+Clean up the code ¯\_(ツ)_/¯ 
 
 ## License
 
