@@ -2,23 +2,15 @@ from telethon import TelegramClient
 #from telethon.errors.rpc_errors_401 import SessionPasswordNeededError
 from telethon.tl.functions.contacts import ResolveUsernameRequest
 from telethon.tl.types.messages import Messages
-from http.server import BaseHTTPRequestHandler, HTTPServer
 import tornado.ioloop
 import tornado.web
 import pprint
-
 import json
+from credentials import * 
 
-# (1) Use your own values here (https://core.telegram.org/api/obtaining_api_id)
-api_id = 000000
-api_hash = '00000000000000000000000'
 
-phone = '+000000000000'
-username = 'theone'
 
-project_id = 2176677882
-
-# (2) Create the client and connect
+# Create the client and connect
 client = TelegramClient(username, api_id, api_hash)
 client.connect()
 
