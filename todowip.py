@@ -9,7 +9,6 @@ import json
 from credentials import * 
 
 
-
 # Create the client and connect
 client = TelegramClient(username, api_id, api_hash)
 client.connect()
@@ -22,28 +21,29 @@ if not client.is_user_authorized():
     except SessionPasswordNeededError:
         client.sign_in(password=input('Password: '))
 
-# Helper function to send messages to wipchat telegram group 
-
 # Define web server 'controller'
-class MyDumpHandler(tornado.web.RequestHandler):
+class myRequestHandler(tornado.web.RequestHandler):
     pprint.pprint('HTTP Listener initialized:')
-    pprint.pprint('##########################')
-    pprint.pprint('#######---W I P-----######')
-    pprint.pprint('##########################')
     
     def post(self):
         data = tornado.escape.json_decode(self.request.body)
+
+
         if data['event_name'] == "item:added" and data["event_data"]["project_id"] == project_id:
             message = "/todo " + data["event_data"]["content"]
             # client.send_message('wipbots', message)
         if data['event_name'] == "item:completed" and data["event_data"]["project_id"] == project_id:
             message = "/done " + data["event_data"]["content"]
             client.send_message('wipchat', message)
+        if  data['event_name'] == "item:completed":
+            message = "Completed in Todoist: " + data["event_data"]["content"]
+            client.send_message('davidsreport', message)
+
         pprint.pprint(data['event_name'] + " in project " + str(data["event_data"]["project_id"]) + " is not handled") 
 
 # Run server loop
 if __name__ == "__main__":
-    tornado.web.Application([(r"/.*", MyDumpHandler),]).listen(5500)
+    tornado.web.Application([(r"/.*", myRequestHandler),]).listen(5500)
     tornado.ioloop.IOLoop.instance().start()
 
 

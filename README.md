@@ -15,7 +15,7 @@ Small python script with really overkill Tornado framework;
 
 ### Prerequisites
 ```
-python3 (duh)
+python3
 ```
 ```
 pip3 install -r requirements.txt
@@ -31,9 +31,8 @@ Ha!
 
 ## ToDo
 
-Clean up the code ¯\_(ツ)_/¯ 
+Nothing ¯\_(ツ)_/¯ 
 
-Move credentials into a separate file
 
 ## License
 
