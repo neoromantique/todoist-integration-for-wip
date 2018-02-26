@@ -28,7 +28,6 @@ class myRequestHandler(tornado.web.RequestHandler):
     def post(self):
         data = tornado.escape.json_decode(self.request.body)
 
-
         if data['event_name'] == "item:added" and data["event_data"]["project_id"] == project_id:
             message = "/todo " + data["event_data"]["content"]
             # client.send_message('wipbots', message)
@@ -45,7 +44,3 @@ class myRequestHandler(tornado.web.RequestHandler):
 if __name__ == "__main__":
     tornado.web.Application([(r"/.*", myRequestHandler),]).listen(5500)
     tornado.ioloop.IOLoop.instance().start()
-
-
-
-
