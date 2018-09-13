@@ -34,9 +34,6 @@ class myRequestHandler(tornado.web.RequestHandler):
         if data['event_name'] == "item:completed" and data["event_data"]["project_id"] == project_id:
             message = "/done " + data["event_data"]["content"]
             client.send_message('wipchat', message)
-        if  data['event_name'] == "item:completed":
-            message = "Completed in Todoist: " + data["event_data"]["content"]
-            client.send_message('davidsreport', message)
 
         pprint.pprint(data['event_name'] + " in project " + str(data["event_data"]["project_id"]) + " is not handled") 
 
